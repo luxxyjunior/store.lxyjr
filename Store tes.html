@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LuxxyJunior Store</title>
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+    body { color: #fff; line-height: 1.6; overflow-x: hidden; background: #0a0a1a; }
+
+    /* Background wave */
+    .waves {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+    }
+    .wave {
+      position: absolute;
+      bottom: 0;
+      width: 200%;
+      height: 100%;
+      background-repeat: repeat-x;
+      opacity: 0.5;
+      animation: wave 20s linear infinite;
+    }
+    .wave1 {
+      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="320"><path fill="%2300c3ff" fill-opacity="0.4" d="M0,96L48,106.7C96,117,192,139,288,133.3C384,128,480,96,576,90.7C672,85,768,107,864,133.3C960,160,1056,192,1152,186.7C1248,181,1344,139,1392,117.3L1440,96L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"></path></svg>') repeat-x;
+      animation-duration: 25s;
+    }
+    .wave2 {
+      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="320"><path fill="%23bd00ff" fill-opacity="0.4" d="M0,224L48,213.3C96,203,192,181,288,165.3C384,149,480,139,576,160C672,181,768,235,864,245.3C960,256,1056,224,1152,197.3C1248,171,1344,149,1392,138.7L1440,128L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"></path></svg>') repeat-x;
+      animation-duration: 35s;
+    }
+    @keyframes wave {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
+    /* Hero */
+    .hero {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background: linear-gradient(to bottom, rgba(10,10,26,0.9), rgba(10,10,26,0.7));
+    }
+    .hero h1 {
+      font-size: 3rem;
+      font-weight: 600;
+      margin-bottom: 10px;
+      background: linear-gradient(90deg, #00c3ff, #bd00ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero p { font-size: 1.2rem; margin-bottom: 20px; color: #ccc; }
+    .scroll-down {
+      font-size: 2rem;
+      color: #00c3ff;
+      animation: bounce 2s infinite;
+      cursor: pointer;
+    }
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(10px); }
+    }
+
+    /* Section */
+    section {
+      padding: 60px 20px;
+      max-width: 800px;
+      margin: auto;
+      position: relative;
+      z-index: 2;
+    }
+    section h2 {
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 40px;
+      color: #00c3ff;
+    }
+
+    .category {
+      background: rgba(20, 20, 30, 0.85);
+      padding: 20px 25px;
+      border-radius: 15px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.6);
+      margin-bottom: 25px;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.7s ease;
+      backdrop-filter: blur(6px);
+    }
+    .category.show { opacity: 1; transform: translateY(0); }
+    .category h3 {
+      font-size: 1.3rem;
+      margin-bottom: 15px;
+      color: #00c3ff;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .category ul { list-style: none; padding-left: 0; }
+    .category ul li {
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .category ul li i { color: #bd00ff; font-size: 1rem; }
+
+    /* Links */
+    .links {
+      text-align: center;
+      margin-top: 40px;
+    }
+    .links a {
+      display: inline-block;
+      margin: 10px;
+      padding: 12px 20px;
+      border-radius: 30px;
+      text-decoration: none;
+      color: #fff;
+      background: linear-gradient(90deg, #00c3ff, #bd00ff);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+      transition: transform 0.3s ease;
+    }
+    .links a:hover { transform: scale(1.05); }
+    .links i { margin-right: 8px; }
+
+    /* Order Button */
+    .order-section {
+      text-align: center;
+      margin-top: 50px;
+    }
+    .order-section p {
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: #00c3ff;
+      margin-bottom: 20px;
+    }
+    .order-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 1.2rem;
+      font-weight: 600;
+      padding: 15px 30px;
+      border-radius: 40px;
+      background: linear-gradient(90deg, #5865F2, #3b4cca);
+      color: #fff;
+      text-decoration: none;
+      box-shadow: 0 0 15px rgba(0,0,0,0.6);
+      transition: transform 0.3s ease;
+      animation: pulseGlow 2s infinite;
+    }
+    .order-btn:hover { transform: scale(1.08); }
+    .order-btn i {
+      font-size: 1.5rem;
+      animation: blink 1.5s infinite alternate;
+    }
+    @keyframes blink {
+      from { color: #fff; text-shadow: 0 0 5px #000; }
+      to { color: #000; text-shadow: 0 0 10px #fff; }
+    }
+    @keyframes pulseGlow {
+      0% { box-shadow: 0 0 10px rgba(0,0,0,0.6); }
+      50% { box-shadow: 0 0 25px rgba(0,0,0,0.9); }
+      100% { box-shadow: 0 0 10px rgba(0,0,0,0.6); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Hero -->
+  <div class="hero">
+    <h1><i class="fa-solid fa-rocket"></i> LuxxyJunior Store</h1>
+    <p>Menyediakan Jasa Server & Review SAMP</p>
+    <div class="scroll-down" onclick="document.getElementById('services').scrollIntoView({behavior:'smooth'})">
+      <i class="fa-solid fa-angles-down"></i>
+    </div>
+  </div>
+
+  <!-- Services -->
+  <section id="services">
+    <h2><i class="fa-solid fa-list"></i> List Jasa</h2>
+
+    <div class="category">
+      <h3><i class="fa-solid fa-star"></i> Jasa Review</h3>
+      <ul>
+        <li><i class="fa-solid fa-check"></i> Review Server SAMP</li>
+      </ul>
+    </div>
+
+    <div class="category">
+      <h3><i class="fa-solid fa-server"></i> Jasa Server SAMP</h3>
+      <ul>
+        <li><i class="fa-solid fa-unlock"></i> Fix Stuck PW</li>
+        <li><i class="fa-solid fa-bug"></i> Fix Bug</li>
+        <li><i class="fa-solid fa-pen-ruler"></i> Membuat Textdraw + Full Script</li>
+        <li><i class="fa-solid fa-signature"></i> Ganti Nama Server</li>
+        <li><i class="fa-solid fa-cloud-upload"></i> Pasang Gamemode Ke Hosting</li>
+        <li><i class="fa-solid fa-map"></i> Comot Textdraw / Mapping / FS</li>
+        <li><i class="fa-solid fa-pencil"></i> Pasang / Ganti / Hapus Textdraw</li>
+        <li><i class="fa-solid fa-cube"></i> Pasang / Ganti / Hapus FS</li>
+        <li><i class="fa-solid fa-tree"></i> Pasang / Ganti / Hapus Mapping</li>
+      </ul>
+    </div>
+
+    <div class="category">
+      <h3><i class="fa-solid fa-circle-question"></i> Lainnya</h3>
+      <ul>
+        <li><i class="fa-solid fa-comment-dots"></i> DLL Tanyakan Saja</li>
+      </ul>
+    </div>
+
+    <div class="links">
+      <a href="https://youtube.com/@luxxyjuniorgaming" target="_blank"><i class="fa-brands fa-youtube"></i> YouTube</a>
+      <a href="https://whatsapp.com/channel/0029Vb4T6efKrWQqnBrnKr3R" target="_blank"><i class="fa-brands fa-whatsapp"></i> WhatsApp Channel</a>
+    </div>
+
+    <!-- Order CTA -->
+    <div class="order-section">
+      <p> Yang mau order bisa join Community Discord:</p>
+      <a href="https://discord.gg/dhC8N7DdqH" target="_blank" class="order-btn">
+        <i class="fa-brands fa-discord"></i> Join Discord
+      </a>
+    </div>
+  </section>
+
+  <!-- Wave Background -->
+  <div class="waves">
+    <div class="wave wave1"></div>
+    <div class="wave wave2"></div>
+  </div>
+
+  <script>
+    // Animasi muncul saat discroll
+    const categories = document.querySelectorAll('.category');
+    window.addEventListener('scroll', () => {
+      const trigger = window.innerHeight * 0.85;
+      categories.forEach(cat => {
+        const rect = cat.getBoundingClientRect().top;
+        if(rect < trigger) cat.classList.add('show');
+      });
+    });
+  </script>
+</body>
+</html>
